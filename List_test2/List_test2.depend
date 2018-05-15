@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1524550663 source:e:\workspace\cpp_programs\list_test2\list_fuction.cpp
+	"List_test.h"
+	<cstdlib>
+	<iostream>
+
+1524566092 e:\workspace\cpp_programs\list_test2\list_test.h
+
+1524550396 source:e:\workspace\cpp_programs\list_test2\main.cpp
+	<iostream>
+	"List_test.h"
+
