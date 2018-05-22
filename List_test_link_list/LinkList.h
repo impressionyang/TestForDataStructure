@@ -25,6 +25,8 @@ public:
     int FindList(int e);                //（5）查找链表中的元素e
     void OutputList();              //（6）输出链表中元素
     int getlength();                    //获取长度
+    int setlength(int new_lengt);                    //长度
+    void set_new_list(Link_List l);
     Link_List getelem();                    //获取elem
 
     /** \brief

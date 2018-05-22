@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1526975612 source:e:\workspace\cpp_programs\list_test_link_list\main.cpp
+	<iostream>
+	"LinkList.h"
+
+1526967255 e:\workspace\cpp_programs\list_test_link_list\linklist.h
+
+1526976723 source:e:\workspace\cpp_programs\list_test_link_list\linklist.cpp
+	<iostream>
+	<cstdlib>
+	"LinkList.h"
+

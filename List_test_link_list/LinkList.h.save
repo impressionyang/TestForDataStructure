@@ -16,7 +16,7 @@ private:
     int length;
 
 public:
-    Linklist Linklist();
+    Linklist();
     void CreatList_h(int n);            //（1）用头插法建立链表
     void CreateList_t(int n);           //（2）用尾插法建立链表
     void InsertList(int i, int e);        //（3）向链表的指定位置i插入元素
@@ -25,6 +25,8 @@ public:
     int FindList(int e);                //（5）查找链表中的元素e
     void OutputList();              //（6）输出链表中元素
     int getlength();                    //获取长度
+    int setlength(int new_lengt);                    //长度
+    void set_new_list(Link_List l);
     Link_List getelem();                    //获取elem
 
     /** \brief

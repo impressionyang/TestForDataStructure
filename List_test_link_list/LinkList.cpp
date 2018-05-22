@@ -62,7 +62,7 @@ void Linklist::CreatList_h(int n)
  */
 void Linklist::InsertList(int i, int e)
 {
-    Link_List p,q;
+    Link_List p,q,temp;
     int a;
     try
     {
@@ -70,15 +70,17 @@ void Linklist::InsertList(int i, int e)
         {
             throw i;
         }
+        q=elem;
          p=elem->next;
-        for(a=1; a<i-1; a++)
+        for(a=0; a<i-1; a++)
         {
+            q=p;
             p=p->next;
         }
-        q=(Link_List) malloc(sizeof(LNode));
-        q->a=e;
-        q->next=p->next;
-        p->next=q;
+        temp=new LNode[1];
+        temp->a=e;
+        temp->next=p;
+        q->next=temp;
         length++;
     }
     catch(int)
@@ -87,54 +89,33 @@ void Linklist::InsertList(int i, int e)
     }
 }
 
-/** \brief
- *
- * \param e int
- * \return void
- *
- */
+
 void Linklist::DeleteList(int e)
 {
     Link_List p,q;
-    int counter=1;
-    p=q=elem->next;
-    while(counter<=length)
+    int key=1;
+    q=elem;
+    p=elem->next;
+    while(p)
     {
-        if(counter==1) {}       //如果为1的话就跳过，保证第一节点无误
-        else
-        {
+        if(p->a==e){
+            q->next=p->next;
+            p=p->next;
+            length--;
+            key=0;
+        }else{
+            q=p;
             p=p->next;
         }
-        if(p->a==e)
-        {
-            if(counter==1)
-            {
-                elem=p->next;
-                length--;
-            }
-            else
-            {
-                q->next=p->next;
-                length--;
-            }
-
-        }
-        else
-        {
-            q=p;
-        }
-        counter++;
     }
 
+    if(key){
+        cout<<"元素"<<e<<"不存在"<<endl;
+    }
 
 }
 
-/** \brief
- *
- * \param i int
- * \return void
- *
- */
+
 void Linklist::DeleteList2(int i)
 {
     Link_List p,q;
@@ -146,18 +127,18 @@ void Linklist::DeleteList2(int i)
             throw i;
         }
 
-        p=q=elem->next;
+        q=elem;
+        p=elem->next;
         while(p)
         {
-            p=p->next;
-            counter++;
             if(counter==i||i==1)
             {
                 break;
             }
+            counter++;
             q=p;
+            p=p->next;
         }
-
         if(i==1)
         {
             elem=p;
@@ -165,6 +146,7 @@ void Linklist::DeleteList2(int i)
         else
         {
             q->next=p->next;
+            length--;
         }
     }
     catch(int)
@@ -173,12 +155,7 @@ void Linklist::DeleteList2(int i)
     }
 }
 
-/** \brief
- *
- * \param e int
- * \return int
- *
- */
+
 int Linklist::FindList(int e)
 {
     Link_List p;
@@ -220,11 +197,6 @@ void Linklist::OutputList()
     cout<<endl;
 }
 
-/** \brief
- *
- * \return int
- *
- */
 int Linklist::getlength()
 {
     return length;
@@ -235,41 +207,38 @@ Link_List Linklist::getelem()
     return elem;
 }
 
+int Linklist::setlength(int new_length){
+    length=new_length;
+    return 1;
+}
+
+void Linklist::set_new_list(Link_List l){
+    elem=l;
+}
+
 void Linklist::split(Linklist &l_another){
-    /** \brief
-     *p,
-     q,
-     get,
-     sets;
-     * \param
-     * \param
-     * \return
-     *
-     */
-    Link_List p,q,get,head2;
-    int counter=1;
-    p=q=elem;
-    head2=l_another.getelem();
+    Link_List p,q,pt,temp;
+    temp=new LNode[1];
+    int l_length=0;
+    q=elem;
+    p=elem->next;
+    pt=temp;
     while(p){
-        if((p->a%2)==0){
-               cout<<p->a<<endl;
-           // get=p;
-            l_another.InsertList(counter,p->a);
+        if(p->a%2==0){
+            pt->next=p;
+            q->next=p->next;
             p=p->next;
-            counter++;
-           // q->next=p;
-           // head2->next=get;
+            pt=pt->next;
+            l_length++;
         }else{
+            q=p;
             p=p->next;
         }
-        q=p;
     }
+    pt->next=NULL;
 
-    cout<<l_another.getlength()<<endl;
-   // for(int i=0;i<l_another.getlength()-1;i++){
-       // head2=head2->next;
-  //  }
-   // head2->next=NULL;
+    l_another.setlength(l_length);
+    l_another.set_new_list(temp);
 
 }
 
