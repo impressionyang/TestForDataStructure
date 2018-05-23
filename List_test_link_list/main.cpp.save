@@ -21,10 +21,11 @@ int main()
 
     cout<<"输入要查找的元素:";
     cin>>e;
-    if(l1.FindList(e)){
-        cout<<"元素"<<e<<"在第"<<l1.FindList(e)<<"位。"<<endl;
-    }else{
+    if(l1.FindList(e)==0){
         cout<<"元素"<<e<<"不存在!"<<endl;
+    }else{
+        cout<<"元素"<<e<<"在第"<<l1.FindList(e)<<"位。"<<endl;
+
     }
     l1.OutputList();
     cout<<endl;
@@ -42,6 +43,9 @@ int main()
     cout<<endl;
 
 
+    cout<<"拆分的链表为:";
+    l1.OutputList();
+    cout<<"拆分的链表为:"<<endl;
     l1.split(l2);
     l1.OutputList();
     l2.OutputList();

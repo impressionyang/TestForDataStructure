@@ -43,6 +43,9 @@ int main()
     cout<<endl;
 
 
+    cout<<"拆分的链表为:";
+    l1.OutputList();
+    cout<<"拆分的链表分别为:"<<endl;
     l1.split(l2);
     l1.OutputList();
     l2.OutputList();
