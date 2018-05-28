@@ -11,14 +11,14 @@ class BinaryTree{
 private:
     BiTree root;
 public:
-    int CreateBiTree();
-    int PreOderTaverse();
-    int MidOderTaverse();
-    int EndOderTaverse();
-    int Mid_none_OderTaverse();
-    int LayerOderTaverse();
-    int display_leaf();
-    int count_leaf();
+    int CreateBiTree(BiTree &T);     //递归建立二叉树
+    int PreOderTaverse();   //先序、中序和后序递归遍历二叉树
+    int MidOderTaverse();   //先序、中序和后序递归遍历二叉树
+    int EndOderTaverse();   //先序、中序和后序递归遍历二叉树
+    int Mid_none_OderTaverse();     //中序递归遍历二叉树
+    int LayerOderTaverse();         //层次遍历二叉树
+    int display_leaf();     //显示叶子节点
+    int count_leaf();       //统计叶子节点数
 
 };
 
