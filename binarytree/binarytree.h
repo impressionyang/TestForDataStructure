@@ -11,7 +11,7 @@ private:
     BiTree root;
 public:
     BinaryTree();
-    BiTree CreateBiTree();     //递归建立二叉树
+    int CreateBiTree(BiTree &T);     //递归建立二叉树
     int PreOderTaverse(BiTree T);   //先序归遍历二叉树
     int MidOderTaverse(BiTree T);   //中序递归遍历二叉树
     int EndOderTaverse(BiTree T);   //后序递归遍历二叉树

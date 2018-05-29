@@ -4,15 +4,14 @@
 #include<queue>
 using namespace std;
 BinaryTree::BinaryTree(){
-    root=CreateBiTree();
+    CreateBiTree(root);
 }
 
 BiTree BinaryTree::get_root(){
     return root;
 }
 
-BiTree BinaryTree::CreateBiTree(){
-    BiTree T;
+int BinaryTree::CreateBiTree(BiTree &T){
     char ch;
     cin>>ch;
     if(ch=='#'){
@@ -23,10 +22,10 @@ BiTree BinaryTree::CreateBiTree(){
 //        }
         T=new BiTNode[1];
         T->data=ch;
-        T->lchild=CreateBiTree();
-        T->rchild=CreateBiTree();
+        CreateBiTree(T->lchild);
+        CreateBiTree(T->rchild);
     }
-    return T;
+    return 1;
 }
 
 

@@ -5,9 +5,8 @@ using namespace std;
 
 int main()
 {
-    //ABC##DE#G##F####
+    //ABC##DE#G##F###
     BinaryTree b;
-    b.CreateBiTree();
     //cout<<b.get_root()->data;
     b.MidOderTaverse(b.get_root());
     cout<<endl;
