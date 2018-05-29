@@ -120,30 +120,30 @@ int BinaryTree::display_leaf(BiTree node){
     return 1;
 }
 
-int BinaryTree::count_leaf(BiTree node){
-    int counter=0;
-    queue<BiTree> q;
-    BiTree bt=node;
-    if(bt==NULL){
-        return -1;
-    }
-    q.push(bt);
-    while(!q.empty()){
-        bt=q.front();
-        q.pop();
-        if(bt->lchild==NULL&&bt->rchild==NULL){
-                counter++;
-            //cout<<bt->data<<" ";
-        }
-        if(bt->lchild){
-            q.push(bt->lchild);
-        }
-        if(bt->rchild){
-            q.push(bt->rchild);
-        }
-    }
-    return counter;
-}
+//int BinaryTree::count_leaf(BiTree node){
+//    int counter=0;
+//    queue<BiTree> q;
+//    BiTree bt=node;
+//    if(bt==NULL){
+//        return -1;
+//    }
+//    q.push(bt);
+//    while(!q.empty()){
+//        bt=q.front();
+//        q.pop();
+//        if(bt->lchild==NULL&&bt->rchild==NULL){
+//                counter++;
+//            //cout<<bt->data<<" ";
+//        }
+//        if(bt->lchild){
+//            q.push(bt->lchild);
+//        }
+//        if(bt->rchild){
+//            q.push(bt->rchild);
+//        }
+//    }
+//    return counter;
+//}
 
 
 

@@ -12,6 +12,6 @@ int main()
     b.MidOderTaverse(b.get_root());
     cout<<endl;
     b.display_leaf(b.get_root());
-    cout<<endl<<b.count_leaf(b.get_root())<<endl;
+    cout<<end<<b.count_leaf(b)
     return 0;
 }
