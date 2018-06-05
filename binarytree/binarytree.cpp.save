@@ -3,23 +3,31 @@
 #include<stack>
 #include<queue>
 using namespace std;
-BinaryTree::BinaryTree(){
+BinaryTree::BinaryTree()
+{
+
+}
+
+void BinaryTree::init_tree()
+{
     CreateBiTree(root);
 }
 
-void BinaryTree::init_tree(){
-}
-
-BiTree BinaryTree::get_root(){
+BiTree BinaryTree::get_root()
+{
     return root;
 }
 
-int BinaryTree::CreateBiTree(BiTree &T){
+int BinaryTree::CreateBiTree(BiTree &T)
+{
     char ch;
     cin>>ch;
-    if(ch=='#'){
+    if(ch=='#')
+    {
         T=NULL;
-    }else{
+    }
+    else
+    {
 //        if(!(T=new BiTNode[1])){
 //            return 0;
 //        }
@@ -32,8 +40,10 @@ int BinaryTree::CreateBiTree(BiTree &T){
 }
 
 
-int BinaryTree::PreOderTaverse(BiTree T){
-    if(T!=NULL){
+int BinaryTree::PreOderTaverse(BiTree T)
+{
+    if(T!=NULL)
+    {
         cout<<T->data<<" ";
         PreOderTaverse(T->lchild);
         PreOderTaverse(T->rchild);
@@ -41,8 +51,10 @@ int BinaryTree::PreOderTaverse(BiTree T){
     return 1;
 }
 
-int BinaryTree::MidOderTaverse(BiTree T){
-    if(T!=NULL){
+int BinaryTree::MidOderTaverse(BiTree T)
+{
+    if(T!=NULL)
+    {
         MidOderTaverse(T->lchild);
         cout<<T->data<<" ";
         MidOderTaverse(T->rchild);
@@ -50,8 +62,10 @@ int BinaryTree::MidOderTaverse(BiTree T){
     return 1;
 }
 
-int BinaryTree::EndOderTaverse(BiTree T){
-    if(T!=NULL){
+int BinaryTree::EndOderTaverse(BiTree T)
+{
+    if(T!=NULL)
+    {
         EndOderTaverse(T->lchild);
         EndOderTaverse(T->rchild);
         cout<<T->data<<" ";
@@ -59,18 +73,20 @@ int BinaryTree::EndOderTaverse(BiTree T){
     return 1;
 }
 
-int BinaryTree::Mid_none_OderTaverse(BiTree node){
+int BinaryTree::Mid_none_OderTaverse(BiTree node)
+{
+    //²éÕÒapi
     stack<BiTree> s;
     BiTree p=node;
-    while(p||!s.empty()){
-        while(p){
+    while(p||!s.empty())
+    {
+        if(p){
             s.push(p);
+            cout<<p->data<<" ";//ÏÈÐò
             p=p->lchild;
-        }
-
-        if(!s.empty()){
+        }else{
             p=s.top();
-            cout<<p->data<<" ";
+            //cout<<p->data<<" ";  //ÖÐÐò
             s.pop();
             p=p->rchild;
         }
@@ -78,69 +94,86 @@ int BinaryTree::Mid_none_OderTaverse(BiTree node){
     return 1;
 }
 
-int BinaryTree::LayerOderTaverse(BiTree node){
+int BinaryTree::LayerOderTaverse(BiTree node)
+{
     queue<BiTree> q;
     BiTree bt=node;
-    if(bt==NULL){
+    if(bt==NULL)
+    {
         return 0;
     }
     q.push(bt);
-    while(!q.empty()){
+    while(!q.empty())
+    {
         bt=q.front();
         q.pop();
         cout<<bt->data<<" ";
-        if(bt->lchild){
+        if(bt->lchild)
+        {
             q.push(bt->lchild);
         }
-        if(bt->rchild){
+        if(bt->rchild)
+        {
             q.push(bt->rchild);
         }
     }
     return 1;
 }
 
-int BinaryTree::display_leaf(BiTree node){
+int BinaryTree::display_leaf(BiTree node)
+{
     queue<BiTree> q;
     BiTree bt=node;
-    if(bt==NULL){
+    if(bt==NULL)
+    {
         return 0;
     }
     q.push(bt);
-    while(!q.empty()){
+    while(!q.empty())
+    {
         bt=q.front();
         q.pop();
-        if(bt->lchild==NULL&&bt->rchild==NULL){
+        if(bt->lchild==NULL&&bt->rchild==NULL)
+        {
             cout<<bt->data<<" ";
         }
-        if(bt->lchild){
+        if(bt->lchild)
+        {
             q.push(bt->lchild);
         }
-        if(bt->rchild){
+        if(bt->rchild)
+        {
             q.push(bt->rchild);
         }
     }
     return 1;
 }
 
-int BinaryTree::count_leaf(BiTree node){
+int BinaryTree::count_leaf(BiTree node)
+{
     int counter=0;
     queue<BiTree> q;
     BiTree bt=node;
-    if(bt==NULL){
+    if(bt==NULL)
+    {
         return -1;
     }
     q.push(bt);
-    while(!q.empty()){
+    while(!q.empty())
+    {
         bt=q.front();
         q.pop();
-        if(bt->lchild==NULL&&bt->rchild==NULL){
-                counter++;
+        if(bt->lchild==NULL&&bt->rchild==NULL)
+        {
+            counter++;
             //cout<<bt->data<<" ";
         }
-        if(bt->lchild){
+        if(bt->lchild)
+        {
             q.push(bt->lchild);
         }
-        if(bt->rchild){
+        if(bt->rchild)
+        {
             q.push(bt->rchild);
         }
     }
