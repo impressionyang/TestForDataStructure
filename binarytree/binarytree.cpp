@@ -4,6 +4,10 @@
 #include<queue>
 using namespace std;
 BinaryTree::BinaryTree(){
+
+}
+
+void BinaryTree::init_tree(){
     CreateBiTree(root);
 }
 

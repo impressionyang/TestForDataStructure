@@ -4,15 +4,17 @@
 #include<queue>
 using namespace std;
 BinaryTree::BinaryTree(){
-    root=CreateBiTree();
+    CreateBiTree(root);
+}
+
+void BinaryTree::init_tree(){
 }
 
 BiTree BinaryTree::get_root(){
     return root;
 }
 
-BiTree BinaryTree::CreateBiTree(){
-    BiTree T;
+int BinaryTree::CreateBiTree(BiTree &T){
     char ch;
     cin>>ch;
     if(ch=='#'){
@@ -23,10 +25,10 @@ BiTree BinaryTree::CreateBiTree(){
 //        }
         T=new BiTNode[1];
         T->data=ch;
-        T->lchild=CreateBiTree();
-        T->rchild=CreateBiTree();
+        CreateBiTree(T->lchild);
+        CreateBiTree(T->rchild);
     }
-    return T;
+    return 1;
 }
 
 
@@ -120,30 +122,30 @@ int BinaryTree::display_leaf(BiTree node){
     return 1;
 }
 
-//int BinaryTree::count_leaf(BiTree node){
-//    int counter=0;
-//    queue<BiTree> q;
-//    BiTree bt=node;
-//    if(bt==NULL){
-//        return -1;
-//    }
-//    q.push(bt);
-//    while(!q.empty()){
-//        bt=q.front();
-//        q.pop();
-//        if(bt->lchild==NULL&&bt->rchild==NULL){
-//                counter++;
-//            //cout<<bt->data<<" ";
-//        }
-//        if(bt->lchild){
-//            q.push(bt->lchild);
-//        }
-//        if(bt->rchild){
-//            q.push(bt->rchild);
-//        }
-//    }
-//    return counter;
-//}
+int BinaryTree::count_leaf(BiTree node){
+    int counter=0;
+    queue<BiTree> q;
+    BiTree bt=node;
+    if(bt==NULL){
+        return -1;
+    }
+    q.push(bt);
+    while(!q.empty()){
+        bt=q.front();
+        q.pop();
+        if(bt->lchild==NULL&&bt->rchild==NULL){
+                counter++;
+            //cout<<bt->data<<" ";
+        }
+        if(bt->lchild){
+            q.push(bt->lchild);
+        }
+        if(bt->rchild){
+            q.push(bt->rchild);
+        }
+    }
+    return counter;
+}
 
 
 
