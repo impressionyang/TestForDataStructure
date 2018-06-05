@@ -36,7 +36,7 @@ int main()
             key=0;
             break;
         case 1:
-            cout<<"请输入中序建立树序列："<<endl;
+            cout<<"请输入先序建立树序列："<<endl;
             b.init_tree();
             break;
         case 2:
