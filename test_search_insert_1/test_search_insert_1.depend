@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1530018454 source:e:\github_backup\testfordatastructure\test_search_insert_1\main.cpp
+	<iostream>
+	"search_sort.h"
+
+1530018622 source:e:\github_backup\testfordatastructure\test_search_insert_1\search_sort.cpp
+	"search_sort.h"
+	<iostream>
+
+1530015770 e:\github_backup\testfordatastructure\test_search_insert_1\search_sort.h
+

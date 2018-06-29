@@ -1,0 +1,219 @@
+#include"search_sort.h"
+#include<iostream>
+using namespace std;
+
+SSTable::SSTable(int length){
+    cout<<"请输入"<<length<<"个数来建立顺序表。"<<endl;
+    int *temp=new int[length+1];
+    for(int i=1;i<=length;i++){
+        cin>>temp[i];
+    }
+    elem=temp;
+    this->length=length+1;
+}
+
+int SSTable::search_Seq(int key){
+    elem[0]=key;
+    int i;
+    for(i=length;elem[i]!=key;i--);
+    return i;
+}
+
+void SSTable::tonormal(){
+    int* temp=new int[length];
+    for(int i=1;i<=length;i++){
+        temp[i-1]=elem[i];
+    }
+    normal=temp;
+}
+
+void SSTable::display(){
+    for(int i=1;i<length;i++){
+        cout<<elem[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void SSTable::InsertSort(){
+    int j,i;
+    for(i=2;i<length;++i){
+        if(elem[i]<elem[i-1]){
+            elem[0]=elem[i];
+            elem[i]=elem[i-1];
+
+            for(j=i-2;elem[0]<elem[j];--j){
+                elem[j+1]=elem[j];
+            }
+            elem[j+1]=elem[0];
+        }
+    }
+}
+
+void SSTable::BInsertSort(){
+    int i,j,low,high,mid;
+    for(i=2;i<length;++i){
+        elem[0]=elem[i];
+        low=1;
+        high=i-1;
+        while(low<=high){
+            mid=(low+high)/2;
+            if(elem[0]<elem[mid]){
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+
+        for(j=i-1;j>=high+1;--j){
+            elem[j+1]=elem[j];
+        }
+        elem[high+1]=elem[0];
+    }
+}
+
+int SSTable::Partition(int low,int high){
+    int key;
+    elem[0]=elem[low];
+    key=elem[low];
+    while(low<high){
+        while(low<high&&elem[high]>=key){
+            --high;
+        }
+        elem[low]=elem[high];
+        while(low<high&&elem[low]<=key){
+            ++low;
+        }
+        elem[high]=elem[low];
+    }
+    elem[low]=elem[0];
+
+    return low;
+}
+
+int SSTable::Partition2(int low,int high){
+    int key,temp;
+    key=elem[low];
+    while(low<high){
+        while(low<high&&elem[high]>=key){
+            --high;
+        }
+        temp=elem[low];
+        elem[low]=elem[high];
+        elem[high]=temp;
+        while(low<high&&elem[low]<=key){
+            ++low;
+        }
+        temp=elem[low];
+        elem[low]=elem[high];
+        elem[high]=temp;
+    }
+
+    return low;
+}
+
+void SSTable::QSort(int low,int high){
+    int location;
+    if(low<high){
+        location=Partition2(low,high);
+        QSort(low,location-1);
+        QSort(location+1,high);
+    }
+}
+
+
+SortBinaryTree::SortBinaryTree(int length){
+    int *temp=new int[length];
+    for(int i=0;i<length;i++){
+        temp[i]=0;
+    }
+    elem=temp;
+    //cout<<elem[0]<<endl;
+    root=NULL;
+    elem_length=0;
+}
+
+BiTree SortBinaryTree::groot(){
+    return root;
+}
+int * SortBinaryTree::gelem(){
+    return elem;
+}
+
+void SortBinaryTree::display(){
+    for(int i=1;i<elem_length;i++){
+        cout<<elem[i];
+    }
+    cout<<endl;
+}
+
+int SortBinaryTree::SearchBST(int key){
+    BiTree p,q,s;
+    p=q=root;
+    //cout<<"1"<<endl;
+    while(NULL!=p){
+            //cout<<"2"<<endl;
+            if(key==p->data){
+                return 1;
+            }else if(key<p->data){
+                q=p;
+                p=p->lchild;
+            }else{
+                q=p;
+                p=p->rchild;
+            }
+        }
+
+    s=new BiTNode[1];
+    s->data=key;
+    s->lchild=NULL;
+    s->rchild=NULL;
+    //cout<<key<<endl;
+
+    if(NULL==root){
+        root=s;
+        //cout<<root->data;
+    }else if(key<q->data){
+        q->lchild=s;
+    }else{
+        q->rchild=s;
+    }
+
+    return 1;
+}
+
+
+void SortBinaryTree::sort_to_table(BiTree T){
+    if(T!=NULL)
+    {
+        sort_to_table(T->lchild);
+        elem[++elem_length]=T->data;
+        sort_to_table(T->rchild);
+    }
+
+}
+
+void SortBinaryTree::display_sort(BiTree T){
+    if(NULL!=T)
+    {
+        display_sort(T->lchild);
+        cout<<T->data;
+        display_sort(T->rchild);
+    }
+}
+
+int SortBinaryTree::Search_Bin(int key){
+    int low=1,high=elem_length+1,mid;
+    while(low<=high){
+        mid=(low+high)/2;
+        if(key==elem[mid]){
+            return mid;
+        }else if(key<elem[mid]){
+            high=mid-1;
+        }else{
+            low=mid+1;
+        }
+    }
+
+    return 0;
+}
+
